@@ -1,0 +1,39 @@
+HOW TO TURN THIS INTO A WINDOWS .EXE
+=====================================
+
+I can't generate the .exe directly (a Windows executable has to be
+built on Windows — it can't be cross-compiled from the Linux server
+I run on). But this takes about 2 minutes on your PC.
+
+EASY WAY (double-click):
+------------------------
+1. Make sure Python 3 is installed.
+   Get it from https://www.python.org/downloads/
+   IMPORTANT: during install, tick "Add python.exe to PATH".
+
+2. Put folder_creator.py and build_exe.bat in the same folder.
+
+3. Double-click  build_exe.bat  and wait.
+
+4. When it finishes, your program is at:
+       dist\BulkFolderCreator.exe
+   Copy that .exe anywhere and run it. No Python needed to RUN it.
+
+
+MANUAL WAY (if you prefer the command line):
+--------------------------------------------
+   pip install pyinstaller openpyxl
+   pyinstaller --onefile --windowed --name "BulkFolderCreator" folder_creator.py
+
+   Result:  dist\BulkFolderCreator.exe
+
+
+NOTES:
+------
+- --onefile   = single .exe (a bit slower to start, easiest to share)
+- --windowed  = no black console window behind the app
+- The first launch may take a few seconds (it unpacks itself).
+- Some antivirus tools flag fresh PyInstaller .exe files as
+  "unknown publisher" — this is a common false positive, not a real
+  virus. You can allow it, or sign the exe if you distribute it widely.
+- Want a custom icon? add:  --icon=youricon.ico
